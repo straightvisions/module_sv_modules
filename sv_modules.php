@@ -36,9 +36,9 @@ class sv_modules extends init{
 		if(count($this->s) === 0) {
 			foreach ($this->get_modules_registered() as $module_name => $module_path) {
 				$s = static::$settings->create($this)
-					->set_ID($module_name)
-					->set_default_value(1)
-					->load_type('checkbox');
+				                      ->set_ID($module_name)
+				                      ->set_default_value(1)
+				                      ->load_type('checkbox');
 
 				$this->s[$module_name] = $s;
 			}
