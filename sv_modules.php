@@ -12,17 +12,16 @@ namespace sv_100;
 class sv_modules extends init{
 	static $scripts_loaded						= false;
 
-	public function __construct($path,$url){
+	public function __construct(){
+
+	}
+	public function init(){
 		$this->set_section_title('Modules');
 		$this->set_section_desc('Available Modules in SV 100 Theme.');
 		$this->set_section_type('settings');
 		
 		$this->set_module_title('Modules');
 		$this->set_module_desc('Available Modules in SV 100 Theme.');
-
-		$this->path								= $path;
-		$this->url								= $url;
-		$this->name								= get_class($this);
 
 		add_action('admin_init', array($this, 'admin_init'));
 		if(!is_admin()){
