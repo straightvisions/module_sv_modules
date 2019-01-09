@@ -11,13 +11,14 @@ namespace sv_100;
  */
 class sv_modules extends init{
 	static $scripts_loaded						= false;
-	protected $module_title						= 'SV Modules';
-	protected $module_desc						= 'Manage Theme Module Loading.';
 
 	public function __construct($path,$url){
 		$this->set_section_title('Modules');
 		$this->set_section_desc('Available Modules in SV 100 Theme.');
 		$this->set_section_type('settings');
+		
+		$this->set_module_title('Modules');
+		$this->set_module_desc('Available Modules in SV 100 Theme.');
 
 		$this->path								= $path;
 		$this->url								= $url;
