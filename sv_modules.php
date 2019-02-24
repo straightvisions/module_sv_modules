@@ -2,6 +2,7 @@
 namespace sv_100;
 
 /**
+ * @version         1.0
  * @author			straightvisions GmbH
  * @package			sv_100
  * @copyright		2017 straightvisions GmbH
@@ -40,11 +41,11 @@ class sv_modules extends init {
 		if ( count( $this->s ) === 0 ) {
 			$this->s['all_modules'] =
 				static::$settings->create( $this )
-                                 ->set_ID( 'all_modules' )
-                                 ->set_title( __( 'All Modules', $this->get_module_name() ) )
-                                 ->set_description( __( 'Enable or disable all modules.', $this->get_module_name() ) )
-                                 ->set_default_value( 1 )
-                                 ->load_type( 'checkbox' );
+				                 ->set_ID( 'all_modules' )
+				                 ->set_title( __( 'All Modules', $this->get_module_name() ) )
+				                 ->set_description( __( 'Enable or disable all modules.', $this->get_module_name() ) )
+				                 ->set_default_value( 1 )
+				                 ->load_type( 'checkbox' );
 
 			foreach ( $this->get_modules_registered() as $module_name => $module_path ) {
 				$s = static::$settings->create( $this )
