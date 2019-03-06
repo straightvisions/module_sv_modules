@@ -29,7 +29,7 @@ class sv_modules extends init {
 
 		// Loads Scripts
 		static::$scripts->create( $this )
-		                ->set_source( $this->get_file_url( 'lib/js/backend.js' ), $this->get_file_path( 'lib/js/backend.js' ) )
+		                ->set_path( 'lib/js/backend.js' )
 		                ->set_is_backend()
 		                ->set_type( 'js' );
 
