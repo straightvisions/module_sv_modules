@@ -28,10 +28,13 @@ class sv_modules extends init {
 		$this->get_root()->add_section( $this );
 
 		// Loads Scripts
+		// @todo: migrate backend js to core
 		static::$scripts->create( $this )
-		                ->set_path( 'lib/js/backend.js' )
-		                ->set_is_backend()
-		                ->set_type( 'js' );
+			->set_ID('backend')
+			->set_path( 'lib/js/backend.js' )
+			->set_is_backend()
+			->set_type( 'js' )
+			->set_is_enqueued();
 
 		// Loads Settings
 		$this->load_settings();
