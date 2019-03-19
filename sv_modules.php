@@ -17,21 +17,27 @@ class sv_modules extends init {
 	}
 
 	public function init() {
+		// Translates the module
+		load_theme_textdomain( $this->get_module_name(), $this->get_path( 'languages' ) );
+
 		// Module Info
 		$this->set_module_title( 'SV Modules' );
 		$this->set_module_desc( __( 'This module manages all installed theme modules.', $this->get_module_name() ) );
 
 		// Section Info
 		$this->set_section_title( 'Modules' );
-		$this->set_section_desc( __( 'Available Modules in SV 100 Theme.', $this->get_module_name() ) );
+		$this->set_section_desc( __( 'Available Modules in the straightvisions 100 Theme.', $this->get_module_name() ) );
 		$this->set_section_type( 'settings' );
 		$this->get_root()->add_section( $this );
 
 		// Loads Scripts
+		// @todo: migrate backend js to core
 		static::$scripts->create( $this )
-		                ->set_source( $this->get_file_url( 'lib/js/backend.js' ), $this->get_file_path( 'lib/js/backend.js' ) )
-		                ->set_is_backend()
-		                ->set_type( 'js' );
+			->set_ID('backend')
+			->set_path( 'lib/js/backend.js' )
+			->set_is_backend()
+			->set_type( 'js' )
+			->set_is_enqueued();
 
 		// Loads Settings
 		$this->load_settings();
