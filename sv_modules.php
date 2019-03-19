@@ -17,13 +17,16 @@ class sv_modules extends init {
 	}
 
 	public function init() {
+		// Translates the module
+		load_theme_textdomain( $this->get_module_name(), $this->get_path( 'languages' ) );
+
 		// Module Info
 		$this->set_module_title( 'SV Modules' );
 		$this->set_module_desc( __( 'This module manages all installed theme modules.', $this->get_module_name() ) );
 
 		// Section Info
 		$this->set_section_title( 'Modules' );
-		$this->set_section_desc( __( 'Available Modules in SV 100 Theme.', $this->get_module_name() ) );
+		$this->set_section_desc( __( 'Available Modules in the straightvisions 100 Theme.', $this->get_module_name() ) );
 		$this->set_section_type( 'settings' );
 		$this->get_root()->add_section( $this );
 
