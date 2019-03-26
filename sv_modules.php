@@ -43,7 +43,7 @@ class sv_modules extends init {
 		$this->load_settings();
 	}
 
-	public function load_settings() {
+	public function load_settings() :sv_modules {
 		if ( count( $this->s ) === 0 ) {
 			$this->s['all_modules'] =
 				static::$settings->create( $this )
@@ -62,5 +62,7 @@ class sv_modules extends init {
 				$this->s[ $module_name ] = $s;
 			}
 		}
+
+		return $this;
 	}
 }
