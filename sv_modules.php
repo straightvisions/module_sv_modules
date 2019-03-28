@@ -30,38 +30,44 @@ class sv_modules extends init {
 		$this->set_section_type( 'settings' );
 		$this->get_root()->add_section( $this );
 
-		// Loads Scripts
-		// @todo: migrate backend js to core
-		static::$scripts->create( $this )
-			->set_ID('backend')
-			->set_path( 'lib/js/backend.js' )
-			->set_is_backend()
-			->set_type( 'js' )
-			->set_is_enqueued();
-
 		// Loads Settings
-		$this->load_settings();
+		$this->load_settings()->load_scripts();
 	}
 
 	public function load_settings() :sv_modules {
 		if ( count( $this->s ) === 0 ) {
 			$this->s['all_modules'] =
-				static::$settings->create( $this )
-				                 ->set_ID( 'all_modules' )
-				                 ->set_title( __( 'All Modules', $this->get_module_name() ) )
-				                 ->set_description( __( 'Enable or disable all modules.', $this->get_module_name() ) )
-				                 ->set_default_value( 1 )
-				                 ->load_type( 'checkbox' );
+				static::$settings
+					->create( $this )
+					->set_ID( 'all_modules' )
+					->set_title( __( 'All Modules', $this->get_module_name() ) )
+					->set_description( __( 'Enable or disable all modules.', $this->get_module_name() ) )
+					->set_default_value( 1 )
+					->load_type( 'checkbox' );
 
 			foreach ( $this->get_modules_registered() as $module_name => $module_path ) {
-				$s = static::$settings->create( $this )
-				                      ->set_ID( $module_name )
-				                      ->set_default_value( 1 )
-				                      ->load_type( 'checkbox' );
+				$s = static::$settings
+					->create( $this )
+					->set_ID( $module_name )
+					->set_default_value( 1 )
+					->load_type( 'checkbox' );
 
 				$this->s[ $module_name ] = $s;
 			}
 		}
+
+		return $this;
+	}
+
+	protected function load_scripts() :sv_modules {
+		// Register Styles
+		$this->scripts_queue['default_js']        = static::$scripts
+			->create( $this )
+			->set_ID( 'default_js' )
+			->set_path( 'lib/backend/js/default.js' )
+			->set_is_backend()
+			->set_type( 'js' )
+			->set_is_enqueued();
 
 		return $this;
 	}
