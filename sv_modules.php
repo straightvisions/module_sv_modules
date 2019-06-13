@@ -12,10 +12,6 @@ namespace sv_100;
  */
 
 class sv_modules extends init {
-	public function __construct() {
-
-	}
-
 	public function init() {
 		// Module Info
 		$this->set_module_title( 'SV Modules' );
