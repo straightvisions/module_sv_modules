@@ -15,11 +15,11 @@ class sv_modules extends init {
 	public function init() {
 		// Module Info
 		$this->set_module_title( 'SV Modules' );
-		$this->set_module_desc( __( 'This module manages all installed theme modules.', 'sv_100' ) );
+		$this->set_module_desc( __( 'This module manages all installed theme modules.', 'straightvisions_100' ) );
 
 		// Section Info
-		$this->set_section_title( __( 'Modules', 'sv_100' ) );
-		$this->set_section_desc( __( 'Available Modules in the straightvisions 100 Theme.', 'sv_100' ) );
+		$this->set_section_title( __( 'Modules', 'straightvisions_100' ) );
+		$this->set_section_desc( __( 'Available Modules in the straightvisions 100 Theme.', 'straightvisions_100' ) );
 		$this->set_section_type( 'settings' );
 		$this->get_root()->add_section( $this );
 
@@ -33,8 +33,8 @@ class sv_modules extends init {
 				static::$settings
 					->create( $this )
 					->set_ID( 'all_modules' )
-					->set_title( __( 'All Modules', 'sv_100' ) )
-					->set_description( __( 'Enable or disable all modules.', 'sv_100' ) )
+					->set_title( __( 'All Modules', 'straightvisions_100' ) )
+					->set_description( __( 'Enable or disable all modules.', 'straightvisions_100' ) )
 					->set_default_value( 1 )
 					->load_type( 'checkbox' );
 
