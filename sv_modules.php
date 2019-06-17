@@ -60,6 +60,7 @@ class sv_modules extends init {
 			->set_path( 'lib/backend/js/default.js' )
 			->set_is_backend()
 			->set_type( 'js' )
+			->set_deps( array(  'jquery' ) )
 			->set_is_enqueued();
 
 		return $this;
