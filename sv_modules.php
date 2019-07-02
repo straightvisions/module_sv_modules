@@ -18,9 +18,11 @@
 			$this->set_module_desc( __( 'This module manages all installed theme modules.', 'sv100' ) );
 	
 			// Section Info
-			$this->set_section_title( __( 'Modules', 'sv100' ) );
-			$this->set_section_desc( __( 'Available Modules in the straightvisions 100 Theme.', 'sv100' ) );
-			$this->set_section_type( 'settings' );
+			$this->set_section_title( __( 'Modules', 'sv100' ) )
+			     ->set_section_desc( __( 'Available Modules in the straightvisions 100 Theme.', 'sv100' ) )
+			     ->set_section_type( 'settings' )
+			     ->set_section_template_path( $this->get_path( 'lib/backend/tpl/settings.php' ) );
+
 			$this->get_root()->add_section( $this );
 	
 			// Loads Settings
