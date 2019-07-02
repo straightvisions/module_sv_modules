@@ -16,9 +16,7 @@
 	            echo '</div>';
 	            echo '<h3 class="divider">' . __( 'Modules', 'sv100' ) . '</h3>';
 	            echo '<div>';
-            }
-
-            if ( $module->get_settings()[ $module_name ]->get_disabled() !== 'disabled' ) {
+            } else if ( $module->get_settings()[ $module_name ]->get_disabled() !== 'disabled' ) {
 	            switch ( $setting_pos ) {
 		            case 1:
 			            echo '<div class="sv_setting_flex">';
