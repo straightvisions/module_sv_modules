@@ -7,16 +7,18 @@
 		$setting_pos        = 1;
 		$required_modules   = array();
 
+		echo '<h3 class="divider">' . __( 'Deactivate all modules', 'sv100' ) . '</h3>';
+		echo '<div class="sv_setting_flex">';
+		echo $module->get_settings()[ 'all_modules' ]->run_type()->form();
+		echo '</div>';
+		echo '<h3 class="divider">' . __( 'Modules', 'sv100' ) . '</h3>';
+		echo '<div>';
+
+		unset( $module->s[ 'all_modules' ] );
+
 		// Outputs setting for all modules and required Modules
         foreach ( $module->s as $module_name => $module_path ) {
-            if ( $module_name === 'all_modules' ) {
-                echo '<h3 class="divider">' . __( 'Deactivate all modules', 'sv100' ) . '</h3>';
-                echo '<div class="sv_setting_flex">';
-	            echo $module->get_settings()[ $module_name ]->run_type()->form();
-	            echo '</div>';
-	            echo '<h3 class="divider">' . __( 'Modules', 'sv100' ) . '</h3>';
-	            echo '<div>';
-            } else if ( $module->get_settings()[ $module_name ]->get_disabled() !== 'disabled' ) {
+            if ( $module->get_settings()[ $module_name ]->get_disabled() !== 'disabled' ) {
 	            switch ( $setting_pos ) {
 		            case 1:
 			            echo '<div class="sv_setting_flex">';
@@ -41,7 +43,7 @@
             }
         }
 
-        if ( $setting_pos < 3 ) {
+        if ( $setting_pos === 2 ) {
             echo '</div>';
         }
 
@@ -74,7 +76,7 @@
 	        }
         }
 
-		if ( $setting_pos < 3 ) {
+		if ( $setting_pos === 2 ) {
 			echo '</div>';
 		}
 
