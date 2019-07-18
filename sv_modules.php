@@ -13,40 +13,29 @@
 	
 	class sv_modules extends init {
 		public function init() {
-			// Module Info
-			$this->set_module_title( 'SV Modules' );
-			$this->set_module_desc( __( 'This module manages all installed theme modules.', 'sv100' ) );
-	
-			// Section Info
-			$this->set_section_title( __( 'Modules', 'sv100' ) )
+			$this->set_module_title( 'SV Modules' )
+				 ->set_module_desc( __( 'This module manages all installed theme modules.', 'sv100' ) )
+				 ->load_settings()
+				 ->load_scripts()
+				 ->set_section_title( __( 'Modules', 'sv100' ) )
 			     ->set_section_desc( __( 'Available Modules in the straightvisions 100 Theme.', 'sv100' ) )
 			     ->set_section_type( 'settings' )
-			     ->set_section_template_path( $this->get_path( 'lib/backend/tpl/settings.php' ) );
-
-			$this->get_root()->add_section( $this );
-	
-			// Loads Settings
-			$this->load_settings()->load_scripts();
+			     ->set_section_template_path( $this->get_path( 'lib/backend/tpl/settings.php' ) )
+				 ->get_root()
+				 ->add_section( $this );
 		}
 	
-		public function load_settings(): sv_modules {
-			if ( count( $this->s ) === 0 ) {
-				$this->s['all_modules'] =
-					$this->get_setting()
-						 ->set_ID( 'all_modules' )
-						 ->set_title( __( 'All Modules', 'sv100' ) )
-						 ->set_description( __( 'Enable or disable all modules.', 'sv100' ) )
-						 ->set_default_value( 1 )
-						 ->load_type( 'checkbox' );
-	
-				foreach ( $this->get_modules_registered() as $module_name => $module_path ) {
-					$s = $this->get_setting()
-							  ->set_ID( $module_name )
-							  ->set_default_value( 1 )
-							  ->load_type( 'checkbox' );
-	
-					$this->s[ $module_name ] = $s;
-				}
+		protected function load_settings(): sv_modules {
+			$this->get_setting( 'all_modules' )
+				 ->set_title( __( 'All Modules', 'sv100' ) )
+				 ->set_description( __( 'Enable or disable all modules.', 'sv100' ) )
+				 ->set_default_value( 1 )
+				 ->load_type( 'checkbox' );
+
+			foreach ( $this->get_modules_registered() as $module_name => $module_path ) {
+				$this->get_setting( $module_name )
+					 ->set_default_value( 1 )
+					 ->load_type( 'checkbox' );
 			}
 	
 			return $this;
@@ -54,15 +43,12 @@
 	
 		protected function load_scripts(): sv_modules {
 			// Register Styles
-			$this->scripts_queue['default_js'] =
-				static::$scripts
-					->create( $this )
-					->set_ID( 'default_js' )
-					->set_path( 'lib/backend/js/default.js' )
-					->set_is_backend()
-					->set_type( 'js' )
-					->set_deps( array(  'jquery' ) )
-					->set_is_enqueued();
+			$this->get_script( 'default_js' )
+				 ->set_path( 'lib/backend/js/default.js' )
+				 ->set_is_backend()
+				 ->set_type( 'js' )
+				 ->set_deps( array(  'jquery' ) )
+				 ->set_is_enqueued();
 	
 			return $this;
 		}
