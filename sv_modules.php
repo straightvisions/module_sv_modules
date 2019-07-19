@@ -17,7 +17,7 @@
 				 ->set_module_desc( __( 'Manages all installed theme modules.', 'sv100' ) )
 				 ->load_settings()
 				 ->load_scripts()
-				 ->set_section_title( __( 'Theme modules', 'sv100' ) )
+				 ->set_section_title( __( 'Modules', 'sv100' ) )
 			     ->set_section_desc( __( 'Available modules in the SV100 theme', 'sv100' ) )
 			     ->set_section_type( 'settings' )
 			     ->set_section_template_path( $this->get_path( 'lib/backend/tpl/settings.php' ) )
