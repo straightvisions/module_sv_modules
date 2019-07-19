@@ -6,8 +6,7 @@
 		<?php
 		$setting_pos        = 1;
 		$required_modules   = array();
-		
-		echo '<h3 class="divider">' . __( 'Deactivate all modules', 'sv100' ) . '</h3>';
+
 		echo '<div class="sv_setting_flex">';
 		echo $module->get_setting( 'all_modules' )->run_type()->form();
 		echo '</div>';
