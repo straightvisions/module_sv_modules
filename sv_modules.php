@@ -20,9 +20,11 @@
 				 ->set_section_title( __( 'Modules', 'sv100' ) )
 			     ->set_section_desc( __( 'Available modules in the SV100 theme', 'sv100' ) )
 			     ->set_section_type( 'settings' )
-			     ->set_section_template_path( $this->get_path( 'lib/backend/tpl/settings.php' ) )
-				 ->get_root()
-				 ->add_section( $this );
+			     ->set_section_template_path( $this->get_path( 'lib/backend/tpl/settings.php' ) );
+
+			if($this->get_is_expert_mode()) {
+				$this				 ->get_root()->add_section( $this );
+			}
 		}
 	
 		protected function load_settings(): sv_modules {
