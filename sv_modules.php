@@ -13,7 +13,7 @@
 	
 	class sv_modules extends init {
 		public function init() {
-			$this->set_module_title( 'SV Modules' )
+			$this->set_module_title( __( 'SV Modules', 'sv100' ) )
 				 ->set_module_desc( __( 'Manages all installed theme modules.', 'sv100' ) )
 				 ->load_settings()
 				 ->load_scripts()
