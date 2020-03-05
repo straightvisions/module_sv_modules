@@ -8,7 +8,7 @@
 		$required_modules   = array();
 
 		echo '<div class="sv_setting_flex">';
-		echo $module->get_setting( 'all_modules' )->run_type()->form();
+		echo $module->get_setting( 'all_modules' )->form();
 		echo '</div>';
 		echo '<h3 class="divider">' . __( 'Modules', 'sv100' ) . '</h3>';
 		echo '<div>';
@@ -23,24 +23,24 @@
 				switch ( $setting_pos ) {
 					case 1:
 						echo '<div class="sv_setting_flex">';
-						echo $module->get_setting( $module_name )->run_type()->form();
+						echo $module->get_setting( $module_name )->form();
 						
 						$setting_pos++;
 						break;
 					case 2:
-						echo $module->get_setting( $module_name )->run_type()->form();
+						echo $module->get_setting( $module_name )->form();
 						
 						$setting_pos++;
 						break;
 					case 3:
-						echo $module->get_setting( $module_name )->run_type()->form();
+						echo $module->get_setting( $module_name )->form();
 						echo '</div>';
 						
 						$setting_pos = 1;
 						break;
 				}
 			} else {
-				$required_modules[ $module_name ] = $module->get_setting( $module_name )->run_type()->form();
+				$required_modules[ $module_name ] = $module->get_setting( $module_name )->form();
 			}
 		}
 		
