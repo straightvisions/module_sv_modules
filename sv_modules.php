@@ -2,7 +2,7 @@
 	namespace sv100;
 	
 	/**
-	 * @version         4.007
+	 * @version         4.008
 	 * @author			straightvisions GmbH
 	 * @package			sv100
 	 * @copyright		2019 straightvisions GmbH
@@ -23,7 +23,7 @@
 			     ->set_section_template_path( $this->get_path( 'lib/backend/tpl/settings.php' ) );
 
 			if($this->get_is_expert_mode()) {
-				$this				 ->get_root()->add_section( $this );
+				$this->get_root()->add_section( $this );
 			}
 		}
 	
