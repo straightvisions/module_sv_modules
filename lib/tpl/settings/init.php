@@ -4,7 +4,7 @@
 		<div class="sv_section_description"><?php echo $module->get_section_desc(); ?></div>
 
 		<?php
-		$setting_pos        = 1;
+		$setting_pos		= 1;
 		$required_modules   = array();
 
 		echo '<div class="sv_setting_flex">';
@@ -48,7 +48,7 @@
 			echo '</div>';
 		}
 
-		$setting_pos        = 1;
+		$setting_pos		= 1;
 
 		echo '</div>';
 		echo '<h3 class="divider">' . __( 'Required modules', 'sv100' ) . '</h3>';
