@@ -15,6 +15,16 @@
 				$this->get_root()->add_section( $this );
 			}
 		}
+		protected function register_scripts(): sv_modules {
+			$this->get_script('js_backend_init')
+			     ->set_path('lib/js/backend/init.js')
+			     ->set_type('js')
+			     ->set_is_backend()
+			     ->set_deps(array('jquery'))
+			     ->set_is_enqueued();
+
+			return $this;
+		}
 		protected function load_settings(): sv_modules {
 			$this->get_setting( 'all_modules' )
 				 ->set_title( __( 'All modules', 'sv100' ) )
